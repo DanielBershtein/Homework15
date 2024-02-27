@@ -1,16 +1,18 @@
 import { students } from "../data/students";
-function Dashboard(props) {
+function Dashboard() {
   return (
     <div className="student-list">
-      {props.students.map((student) => (
+      {students.map((student) => (
         <div className="student" key={student.id}>
           <table>
             <thead>
-              <th>Name</th>
-              <th>Age</th>
-              <th>Major</th>
-              <th>University</th>
-              <th>Average Grade</th>
+              <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Major</th>
+                <th>University</th>
+                <th>Average Grade</th>
+              </tr>
             </thead>
             <tbody>
               <tr>

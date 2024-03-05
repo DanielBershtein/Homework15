@@ -4,13 +4,13 @@ function Dashboard(props) {
   return (
     <table>
       <tbody>
-        <tr>
+        <thead>
           <th>Name</th>
           <th>Age</th>
           <th>Major</th>
           <th>University</th>
           <th>Average Grade</th>
-        </tr>
+        </thead>
         {props.students.map((student) => (
           <tr key={student.id}>
             <td>{student.name}</td>

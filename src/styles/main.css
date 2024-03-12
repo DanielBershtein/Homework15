@@ -1,4 +1,6 @@
 @import "./global.css";
+@import "./register.css";
+@import "./login.css";
 @import "./dashboard.css";
 @import "./footer.css";
 @import "./header.css";

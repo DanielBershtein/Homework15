@@ -3,14 +3,14 @@ import students from "../data/students";
 function Dashboard(props) {
   return (
     <table>
+      <thead>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Major</th>
+        <th>University</th>
+        <th>Average Grade</th>
+      </thead>
       <tbody>
-        <thead>
-          <th>Name</th>
-          <th>Age</th>
-          <th>Major</th>
-          <th>University</th>
-          <th>Average Grade</th>
-        </thead>
         {props.students.map((student) => (
           <tr key={student.id}>
             <td>{student.name}</td>

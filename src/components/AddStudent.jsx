@@ -1,32 +1,29 @@
 import { useState } from "react";
 import Button from "./Button";
 
-const AddStudent = (props) => {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
-  const [major, setMajor] = useState("");
-  const [university, setUniversity] = useState("");
-  const [averageGrade, setAverageGrade] = useState("");
+const AddStudent = ({ handleAddStudent }) => {
+  const [newStudent, setNewStudent] = useState([]);
 
   const submit = (event) => {
     event.preventDefault();
-    const newStudent = { name, age, major, university, averageGrade };
+    const { name, age, major, university, averageGrade } = newStudent;
+    if (!name || age <= 0 || !major || !university || averageGrade <= 0) return;
     handleAddStudent(newStudent);
   };
   const handleChange = (e) => {
     const name = e.target.name;
-    const age = e.target.age;
-    const major = e.target.major;
-    const university = e.target.university;
-    const averageGrade = e.target.averageGrade;
+    // const age = e.target.age;
+    // const major = e.target.major;
+    // const university = e.target.university;
+    // const averageGrade = e.target.averageGrade;
     const value = e.target.value;
     setNewStudent({
       ...newStudent,
       [name]: value,
-      [age]: value,
-      [major]: value,
-      [university]: value,
-      [averageGrade]: value,
+      // [age]: value,
+      // [major]: value,
+      // [university]: value,
+      // [averageGrade]: value,
     });
   };
   return (
@@ -36,38 +33,38 @@ const AddStudent = (props) => {
         <input
           type="text"
           onChange={handleChange}
-          value={name}
+          value={newStudent.name}
           placeholder="Student name.."
         />
         <label htmlFor="age">Age: </label>
         <input
-          type="text"
+          type="number"
           onChange={handleChange}
-          value={age}
+          value={newStudent.age}
           placeholder="Student age.."
         />
         <label htmlFor="major">Major: </label>
         <input
           type="text"
           onChange={handleChange}
-          value={major}
+          value={newStudent.major}
           placeholder="Student major.."
         />
         <label htmlFor="university">University: </label>
         <input
           type="text"
           onChange={handleChange}
-          value={university}
+          value={newStudent.university}
           placeholder="Student university.."
         />
         <label htmlFor="averageGrade">Average Grade: </label>
         <input
-          type="text"
+          type="number"
           onChange={handleChange}
-          value={averageGrade}
+          value={newStudent.averageGrade}
           placeholder="Student average grade.."
         />
-        <Button />
+        <Button>Add</Button>
       </form>
     </>
   );

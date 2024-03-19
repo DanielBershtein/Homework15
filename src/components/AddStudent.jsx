@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "./Button";
 
 const AddStudent = ({ handleAddStudent }) => {
-  const [newStudent, setNewStudent] = useState([]);
+  const [newStudent, setNewStudent] = useState(null);
 
   const submit = (event) => {
     event.preventDefault();

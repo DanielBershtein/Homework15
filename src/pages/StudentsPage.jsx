@@ -1,17 +1,10 @@
-import Dashboard from "./components/Dashboard";
-import studentsArr from "./data/students";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import AddStudent from "./components/AddStudent";
-import { useEffect, useState } from "react";
-import { userService } from "./services/userService";
-import HomePage from "./pages/HomePage";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
-import AuthProvider from "./context/AuthProvider";
-import ProfilePage from "./pages/ProfilePage";
+import React, { useEffect, useState } from "react";
+import { postService } from "../services/postService";
+import AddStduent from "../components/AddStudent";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../context/AuthProvider";
 
-function App() {
+const StudentsPage = () => {
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [showRegister, setShowRegister] = useState(false);
   const [students, setStudents] = useState(studentsArr);
@@ -84,36 +77,13 @@ function App() {
     userService.logout();
     setLoggedInUser(null);
   };
-  return (
-    <main>
-      {/* <Header loggedInUser={loggedInUser} handleLogout={handleLogout} />
-      !loggedInUser ? ( showRegister ? (
-      <Register handleAuth={handleAuth} setShowRegister={setShowRegister} />
-      ) : (
-      <Login handleAuth={handleAuth} setShowRegister={setShowRegister} />
-      ) ) : ( <AddStudent handleAddStudent={handleAddStudent} />
-      <h2>Student List</h2>
-      <Dashboard
-        loggedInUser={loggedInUser}
-        students={students}
-        removeStudent={removeStudent}
-      />
-      {loggedInUser.isAdmin ? (
-        <Admin users={users} removeUser={removeUser} />
-      ) : null}
-      <img src={svg} width="100px" height="100px" />
-      <Footer /> ) */}
-      <AuthProvider>
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<RegisterPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-        </Routes>
-      </AuthProvider>
-    </main>
-  );
-}
+};
 
-export default App;
+if (!students) return <div>Loading...</div>;
+return (
+  <>
+    <AddStudent addStudent={addStudent} removeStudent={removeStudent} />
+  </>
+);
+
+export default StudentsPage;

@@ -65,4 +65,14 @@ const students = [
   },
 ];
 
+function getInitialStudents() {
+  return students;
+}
+
+async function getInitialStudentsAsync() {
+  return Promise.resolve(students);
+}
+
+export const postService = { getInitialStudents, getInitialStudentsAsync };
+
 export default students;
